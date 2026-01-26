@@ -58,7 +58,24 @@ namespace bmiszamlalo
                     atlagosak++;
                 }
             }
-            Console.WriteLine($"5. b, feladat egészséges BMI tartományba eső diákok száma: {atlagosak} ")
+            Console.WriteLine($"5. b, feladat egészséges BMI tartományba eső diákok száma: {atlagosak} ");
+            bool vantoth = false;
+            foreach (var d in list)
+            {
+                if (d.Név.ToLower().Contains("tóth éva"))
+                {
+                    vantoth = true;
+                    break;
+                }
+            }
+            if (vantoth)
+            {
+                Console.WriteLine("5. c, feladat: Van-e Tóth Éva a diákok között: Igen");
+            }
+            else
+            {
+                Console.WriteLine("5. c, Feladat: Van-e Tóth Éva a diákok között: Nem");
+            }
 
 
             string fajlba  = "Név; BMI/n";
