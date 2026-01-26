@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Cryptography.X509Certificates;
 
 namespace bmiszamlalo
 {
@@ -8,7 +9,7 @@ namespace bmiszamlalo
         static void Main(string[] args)
         {
             List<diak> list = new List<diak>();
-            var sorok = File.ReadAllLines("bmi.txt" ,System.Text.Encoding.Latin1).Skip(1);
+            var sorok = File.ReadAllLines("bmi.txt", System.Text.Encoding.Latin1).Skip(1);
             foreach (var sor in sorok)
 
             {
@@ -28,26 +29,41 @@ namespace bmiszamlalo
             Console.WriteLine("-------------");
             Console.WriteLine($"3. a, feladat: A diákok száma: {list.Count}");
 
-            diak legmagasabb=list[0];
+            diak legmagasabb = list[0];
             foreach (var diak in list)
             {
                 if (diak.Magasság > legmagasabb.Magasság)
                 {
                     legmagasabb = diak;
                 }
-                Console.WriteLine($"3. b, feladat: A legmagasabb diák:" + $"{legmagasabb.Név }, magasság:{legmagasabb.Magasság} cm");
             }
-            foreach (var d in list) 
+            Console.WriteLine($"3. b, feladat: A legmagasabb diák:" + $"{legmagasabb.Név}, magasság:{legmagasabb.Magasság} cm");
+            foreach (var d in list)
             {
-                Console.WriteLine(d.Név+":"+d.bmi());
+                Console.WriteLine(d.Név + ":" + d.bmi());
             }
             double atlag = 0;
             foreach (var d in list)
             {
                 atlag += d.Testsúly;
             }
-            atlag/= list.Count;
-            Console.WriteLine($"5.a.feladat átlagos testsúly:"+ $"{atlag:F1} kg" );
+            atlag /= list.Count;
+            Console.WriteLine($"5.a.feladat átlagos testsúly:" + $"{atlag:F1} kg");
+
+            int normalDb = 0;
+            Console.WriteLine("5.b.feladat: Normál testtömegű diákok:");
+
+
+            string fajlba  = "Név; BMI/n";
+            foreach (var d in list)
+            {
+                double magassagm = d.Magasság / 100.0;
+                double BMI = d.Testsúly / (magassagm * magassagm);
+                fajlba += $"{d.Név}; {BMI:F1}/n";
+            }
+            File.WriteAllText("egezseges_diakok.txt", fajlba);
+
+
         }
     }
 }
