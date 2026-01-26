@@ -50,8 +50,15 @@ namespace bmiszamlalo
             atlag /= list.Count;
             Console.WriteLine($"5.a.feladat átlagos testsúly:" + $"{atlag:F1} kg");
 
-            int normalDb = 0;
-            Console.WriteLine("5.b.feladat: Normál testtömegű diákok:");
+            int atlagosak = 0;
+            foreach (var d in list)
+            {
+                if (d.bmi() == "normál(Nyomod öcskös)")
+                {
+                    atlagosak++;
+                }
+            }
+            Console.WriteLine($"5. b, feladat egészséges BMI tartományba eső diákok száma: {atlagosak} ")
 
 
             string fajlba  = "Név; BMI/n";
