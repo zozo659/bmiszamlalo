@@ -1,4 +1,6 @@
-﻿namespace bmiszamlalo
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace bmiszamlalo
 {
 
     internal class Program
@@ -35,6 +37,11 @@
                 }
                 Console.WriteLine($"3. b, feladat: A legmagasabb diák:" + $"{legmagasabb.Név }, magasság:{legmagasabb.Magasság} cm");
             }
+            foreach (var d in list) 
+            {
+                Console.WriteLine(d.Név+":"+d.bmi());
+            }
+
         }
     }
 }
