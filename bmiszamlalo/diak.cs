@@ -49,6 +49,7 @@ Kiss Péter;16;175;68
             }
                 return "elhízott";
         }
+        
     }
 
 }
