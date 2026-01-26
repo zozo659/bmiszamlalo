@@ -39,11 +39,11 @@ Kiss Péter;16;175;68
                 return "sovány";
 
             }
-            if (BMI >= 18.5 && BMI < 24.9) ;
+            if (BMI >= 18.5 && BMI < 24.9)
             {
                 return "normál";
             }
-            if (BMI >= 25 && BMI < 29.9) ;
+            if (BMI >= 25 && BMI < 29.9)
             {
                 return "túlsúlyos";
             }
